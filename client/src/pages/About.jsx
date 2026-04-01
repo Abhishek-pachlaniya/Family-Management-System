@@ -100,22 +100,22 @@ const About = () => {
               {/* IMPORTANT: Replace with your actual photo URL! */}
               <img 
                 src={creator} 
-                alt="Abhay Kumar Jha" 
+                alt="Abhishek Pachlaniya" 
                 className="creator-photo"
               />
             </div>
             <div className="creator-info">
-              <h3>Abhay Kumar Jha</h3>
+              <h3>Abhishek Pachlaniya</h3>
               <p className="creator-bio">
                 A passionate Computer Science Engineering (CSE) student at 
                 <strong> Motilal Nehru National Institute of Technology, Allahabad</strong>.
                 Driven by a love for building practical solutions that make a real-world impact.
               </p>
               <div className="creator-socials">
-                <a href="https://www.linkedin.com/in/abhay-kumar-jha-a1a9b9303/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/abhishek-pachlaniya-a24054322/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <FaLinkedin />
                 </a>
-                <a href="https://github.com/Abhay17R" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <a href="https://github.com/Abhishek-pachlaniya" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                   <FaGithub />
                 </a>
               </div>
@@ -126,7 +126,7 @@ const About = () => {
       </main>
 
       <footer className="about-footer">
-        © {new Date().getFullYear()} HOME - The Family Management System | Developed with ❤️ by Abhay Kumar Jha
+        © {new Date().getFullYear()} HOME - The Family Management System | Developed with ❤️ by Abhishek Pachlnaiya
       </footer>
     </div>
   );
