@@ -54,7 +54,7 @@ const Home = () => {
             <button className="explore-btn">Explore Features ↓</button>
         </Link>
       </div>
-    </div>
+    </div>  
   );
 };
 

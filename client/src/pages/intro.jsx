@@ -180,10 +180,10 @@ const Intro = () => {
 
       {/* --- FOOTER (No Changes Here) --- */}
       <footer className="home-footer">
-        © {new Date().getFullYear()} HOME - The Family Management System | Developed with ❤️ by Abhay Kumar Jha {" "}
+        © {new Date().getFullYear()} HOME - The Family Management System | Developed with ❤️ by Abhishek Pachlaniya {" "}
       </footer>
     </div>
   );
 };
 
-export default Intro;
+export default Intro
