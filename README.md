@@ -53,5 +53,5 @@ Each module is independently structured with clean APIs and scalable design. In-
 
 ### 1. 🔻 Clone the Repository
 ```bash
-git clone https://github.com/Abhay17R/Home-Family_Management_System-.git
+git clone (https://github.com/Abhishek-pachlaniya/Family-Management-System/)
 cd Home-Family_Management_System-
