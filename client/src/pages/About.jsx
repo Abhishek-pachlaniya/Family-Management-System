@@ -126,7 +126,7 @@ const About = () => {
       </main>
 
       <footer className="about-footer">
-        © {new Date().getFullYear()} HOME - The Family Management System | Developed with ❤️ by Abhishek Pachlnaiya
+        © {new Date().getFullYear()} HOME - The Family Management System | Developed with ❤️ by Abhishek Pachlaniya
       </footer>
     </div>
   );
