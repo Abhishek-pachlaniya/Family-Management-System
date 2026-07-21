@@ -58,6 +58,6 @@ app.use("/api/v1/dashboard", dashboardRoutes);
    app.use("/api/v1/communication", communicationRoutes);
    app.use("/api/v1/HOME", homeRoutes);
 
-connection();
+// connection() is called in server.js, not here, to avoid duplicate DB connections
 
 app.use(errorMiddleware);
