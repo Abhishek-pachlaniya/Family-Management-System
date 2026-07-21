@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
    
     const logout = async () => {
         try {
-            await axios.get('http://localhost:4000/api/v1/logout', { withCredentials: true });
+            await axios.get(`${BACKEND_URLL}/api/v1/logout`, { withCredentials: true });
         } catch (error) {
             console.error("Logout API call failed, but logging out on client-side anyway.");
         } finally {
