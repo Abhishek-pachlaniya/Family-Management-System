@@ -25,6 +25,7 @@ export const isAuthenticated =catchAsyncError(async(req,res,next)=>{
     const decoded=jwt.verify(token,process.env.JWT_KEY);
 
     req.user=await User.findById(decoded.id);
+    req.token = token; // settingsController mein session detection ke liye zaroori hai
 
     next();
 

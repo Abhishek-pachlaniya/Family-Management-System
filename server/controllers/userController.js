@@ -12,7 +12,7 @@ import fs from 'fs'; // File System module for deleting files
 import { getSocketServerInstance } from '../socket/socket.js';
 import cloudinary from '../utils/cloudinary.js'
 
-import { ExportConfigurationContextImpl } from "twilio/lib/rest/bulkexports/v1/exportConfiguration.js";
+
 dotenv.config({ path: 'config.env' });
 
 const client = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH);
@@ -213,13 +213,13 @@ export const verifyChildOtp = catchAsyncError(async (req, res, next) => {
       return next(new ErrorHandler("Invalid OTP provided.", 400));
     }
 
-    if (Date.now() > childUser.verificationCodeExpires) {
+    if (Date.now() > childUser.verificationCodeExpire) {
       return next(new ErrorHandler("OTP has expired. Please try adding the child again to receive a new OTP.", 400));
     }
 
     childUser.accountVerified = true;
     childUser.verificationCode = null;
-    childUser.verificationCodeExpires = null;
+    childUser.verificationCodeExpire = null;
     
     await childUser.save({ validateModifiedOnly: true });
 

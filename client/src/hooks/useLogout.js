@@ -24,7 +24,7 @@ export const useLogout = () => {
             
             // ✅ --- SABSE ZAROORI LINE --- ✅
             // User ko login page par redirect karein
-            navigate('/login', { replace: true }); 
+            navigate('/auth', { replace: true }); 
 
         } catch (error) {
             // Agar logout fail hota hai (jo ki rare hai), to error dikhayein

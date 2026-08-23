@@ -221,7 +221,8 @@ export const voteInPoll = catchAsyncError(async (req, res, next) => {
 
 // --- PINNED NOTES ---
 export const addPinnedNote = catchAsyncError(async (req, res, next) => {
-    const { text, chatId } = req.body;
+    const { text } = req.body;
+    const { chatId } = req.params;
     if (String(chatId).startsWith('virtual-')) return res.status(400).json({ message: "Cannot pin a note in an uninitiated chat." });
     if (!text) return res.status(400).json({ message: "Note text cannot be empty" });
     const chat = await Chat.findByIdAndUpdate(chatId, { $push: { pinnedNotes: { text, pinnedBy: req.user._id, pinnedAt: new Date() } } }, { new: true }).populate("pinnedNotes.pinnedBy", "name avatar");

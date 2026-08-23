@@ -63,7 +63,7 @@ const AppRoutes = () => {
             // aur woh kisi protected (private) page par hai,
             // to use login page par bhej do.
             if (window.location.pathname.startsWith('/dashboard')) {
-                navigate('/login', { replace: true });
+                navigate('/auth', { replace: true });
             }
         }
     }

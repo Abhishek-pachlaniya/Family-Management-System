@@ -95,15 +95,15 @@ export const getDashboardData = catchAsyncError(async (req, res, next) => {
             expenseSummary: monthlyExpenseSummary,
             
             quickActions: recentActivities.map(activity => ({
-                user: activity.user.name,
-                avatar: activity.user.avatar.url,
+                user: activity.user ? activity.user.name : 'Unknown User',
+                avatar: activity.user && activity.user.avatar ? activity.user.avatar.url : 'https://i.postimg.cc/3rgrqVDw/dp.png',
                 action: activity.action,
                 
             })),
             
             familyStatus: familyMembers.map(member => ({
                 name: member.name,
-                avatar: member.avatar.url,
+                avatar: member.avatar ? member.avatar.url : 'https://i.postimg.cc/3rgrqVDw/dp.png',
                 // Status "Online", "Offline" ya "Admin" ho sakta hai
                 status: member.role === 'admin' ? 'Admin' : (member.isOnline ? 'Online' : 'Offline')
             }))
