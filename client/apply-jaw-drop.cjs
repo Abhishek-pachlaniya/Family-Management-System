@@ -1,34 +1,19 @@
-.home {
-  position: relative;
-}
-.home button {
-  position: absolute;
-  top: 40px;
-  right: 100px;
-  padding: 12px 30px;
-  font-size: 20px;
-  font-weight: 500;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  color: #fff;
-  transition: all 0.3s;
-}
-.home button:hover {
-  background: transparent;
-  color: #fff;
-  transition: all 0.3s;
-}
-@media(max-width: 1000px){
-    .home button{
-        right: 30px;
-    }
-}
+const fs = require('fs');
+const path = require('path');
 
+const stylesDir = path.join(__dirname, 'src', 'styles');
 
+function processFile(filePath) {
+    if (!filePath.endsWith('.css')) return;
+    if (filePath.includes('App.css') || filePath.includes('index.css') || filePath.includes('about.css') || filePath.includes('intro.css')) return;
 
+    let content = fs.readFileSync(filePath, 'utf-8');
 
-/* Jaw-Dropping Web3 Overrides */
+    // Remove the previously appended Glassmorphism block completely
+    content = content.replace(/\/\* Animated Glassmorphism Overrides \*\/[\s\S]*$/g, '');
+
+    // Add Jaw-Dropping Web3/Cyberpunk Overrides
+    content += `\n/* Jaw-Dropping Web3 Overrides */
 .card, .order-card, .website-card, .dashboard-widget, .stat-card, .modal-content, .action-btn {
     border: 1px solid var(--card-border) !important;
     border-top: 1px solid var(--card-border-glow) !important;
@@ -85,3 +70,23 @@ input:focus, textarea:focus, select:focus {
     background-color: rgba(0, 0, 0, 0.5) !important;
     transform: translateY(-2px);
 }
+`;
+
+    fs.writeFileSync(filePath, content, 'utf-8');
+    console.log('Updated to Jaw-Dropping:', filePath);
+}
+
+function traverseDir(dir) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+        const fullPath = path.join(dir, file);
+        if (fs.statSync(fullPath).isDirectory()) {
+            traverseDir(fullPath);
+        } else {
+            processFile(fullPath);
+        }
+    }
+}
+
+traverseDir(stylesDir);
+console.log('Jaw-Dropping overhaul complete!');

@@ -15,7 +15,7 @@
 
 .page-header h2 {
     font-size: 1.8rem;
-    color: #333;
+    color: var(--text-primary);
     margin: 0 0 0.5rem 0;
 }
 
@@ -35,7 +35,7 @@
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    background-color: #2A3F54;
+    background: transparent;
     color: #fff;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -56,7 +56,7 @@
 
 /* Single Child Card Styling */
 .child-card {
-    background-color: #fff;
+    background: transparent;
     border-radius: 12px;
     
     overflow: hidden; /* Taaki border radius kaam kare */
@@ -90,7 +90,7 @@
 .child-name {
     margin: 0;
     font-size: 1.2rem;
-    color: #343a40;
+    color: var(--text-primary);
 }
 
 .child-username {
@@ -106,7 +106,7 @@
 .card-body h4 {
     margin: 0 0 1rem 0;
     font-size: 1rem;
-    color: #495057;
+    color: var(--text-primary);
     font-weight: 600;
 }
 
@@ -123,15 +123,15 @@
 
 .permission-item span {
     font-size: 0.95rem;
-    color: #495057;
+    color: var(--text-primary);
 }
 
 /* Toggle Switch CSS (AddChild se reuse ki gayi) */
 .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
 .switch input { opacity: 0; width: 0; height: 0; }
-.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: transparent; transition: .4s; }
 .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; }
-input:checked + .slider { background-color: #2A3F54; }
+input:checked + .slider { background: transparent; }
 input:checked + .slider:before { transform: translateX(20px); }
 .slider.round { border-radius: 34px; }
 .slider.round:before { border-radius: 50%; }
@@ -158,10 +158,10 @@ input:checked + .slider:before { transform: translateX(20px); }
 }
 
 .btn-edit {
-    color: #495057;
+    color: var(--text-primary);
 }
 .btn-edit:hover {
-    background-color: #f1f3f5;
+    background: transparent;
 }
 
 .btn-remove {
@@ -169,53 +169,75 @@ input:checked + .slider:before { transform: translateX(20px); }
     border-left: 1px solid #e9ecef;
 }
 .btn-remove:hover {
-    background-color: #fcebeb;
+    background: transparent;
 }
 
 /* Jab koi child na ho */
 .no-children-found {
     text-align: center;
     padding: 4rem 2rem;
-    background-color: #fff;
+    background: transparent;
     border-radius: 12px;
     color: #6c757d;
 }
 
 
-/* Clean Enterprise SaaS Overrides */
+
+
+/* Jaw-Dropping Web3 Overrides */
 .card, .order-card, .website-card, .dashboard-widget, .stat-card, .modal-content, .action-btn {
-    border: 1px solid #E2E8F0 !important;
-    background-color: #FFFFFF !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
-    border-radius: 8px !important;
-    transition: all 0.2s ease !important;
+    border: 1px solid var(--card-border) !important;
+    border-top: 1px solid var(--card-border-glow) !important;
+    border-left: 1px solid var(--card-border-glow) !important;
+    background-color: var(--card-bg) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    box-shadow: 0 10px 30px var(--shadow-color), inset 0 0 20px rgba(0, 240, 255, 0.05) !important;
+    border-radius: 20px !important;
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+    color: var(--text-primary) !important;
 }
 .card:hover, .order-card:hover, .website-card:hover, .action-btn:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025) !important;
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 15px 40px var(--glow-color), inset 0 0 30px rgba(0, 240, 255, 0.1) !important;
+    border-color: var(--primary-color) !important;
+}
+h1, h2, h3, .widget-title, .header-brand {
+    background: linear-gradient(to right, #FFFFFF, var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px var(--glow-color);
 }
 button {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 500 !important;
-    text-transform: none !important;
-    background-color: #3B82F6 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important;
+    background: linear-gradient(135deg, var(--primary-color), #8A2BE2) !important;
     color: #FFFFFF !important;
     border: none !important;
-    border-radius: 6px !important;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 0 20px var(--glow-color) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 button:hover {
-    background-color: #2563EB !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 0 35px var(--glow-purple), 0 0 15px var(--primary-color) !important;
 }
 input, textarea, select {
-    background-color: #FFFFFF !important;
-    border: 1px solid #E2E8F0 !important;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
-    color: #2D3748 !important;
-    border-radius: 6px !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid var(--card-border) !important;
+    border-bottom: 2px solid var(--primary-color) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--heading-color) !important;
+    border-radius: 12px !important;
+    padding: 1rem 1.2rem !important;
+    transition: all 0.4s ease !important;
 }
 input:focus, textarea:focus, select:focus {
     outline: none !important;
-    border-color: #3B82F6 !important;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 20px var(--glow-color), inset 0 0 10px rgba(0, 240, 255, 0.2) !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transform: translateY(-2px);
 }

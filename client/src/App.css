@@ -4,47 +4,69 @@
   width: 100%; /* Taaki choti screen par poori jagah le */
   margin: 0 auto; /* Yeh isko horizontally center karega */
 }
-:root, [data-theme='dark'], [data-theme='light'] {
-  --bg-primary: #F5F7FA;
-  --bg-secondary: #FFFFFF;
-  --text-primary: #2D3748;
-  --text-secondary: #718096;
+:root, [data-theme='dark'] {
+  --primary-color: #00F0FF; /* Neon Cyan */
+  --primary-hover: #00D1FF;
+  --glow-color: rgba(0, 240, 255, 0.4);
+  --glow-purple: rgba(138, 43, 226, 0.4);
   
-  /* Sidebar Variables */
-  --sidebar-bg: #FFFFFF;
-  --sidebar-text: #4A5568;
-  --sidebar-text-active: #2B6CB0;
-  --sidebar-bg-active: #EBF8FF; /* Light blue tint */
+  /* Expensive Dark Mesh Background */
+  --bg-gradient: linear-gradient(135deg, #020617 0%, #0a0f24 40%, #170f35 80%, #020617 100%);
   
-  /* Header Variables */
-  --header-bg: #FFFFFF;
-  --border-color: #E2E8F0;
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --heading-color: #FFFFFF;
   
-  /* SaaS Clean Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Rich Glass Cards */
+  --card-bg: rgba(13, 17, 28, 0.5);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-border-glow: rgba(0, 240, 255, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.5);
   
-  /* Accent Colors */
-  --accent-primary: #3B82F6; /* Bright Light Blue */
-  --accent-hover: #2563EB;
+  --sidebar-bg: rgba(5, 8, 15, 0.7);
+  --sidebar-text: #94A3B8;
+  --sidebar-text-active: #00F0FF;
+  --sidebar-bg-active: rgba(0, 240, 255, 0.1);
   
-  /* Scrollbar */
-  --scrollbar-track: transparent;
-  --scrollbar-thumb: #CBD5E0;
-  
-  /* Typography */
-  --font-body: 'Inter', sans-serif;
-  --font-heading: 'Inter', sans-serif;
+  --header-bg: rgba(5, 8, 15, 0.7);
 }
 
-/* --- GLOBAL & LAYOUT STYLES --- */
+[data-theme='light'] {
+  --primary-color: #3B82F6; 
+  --primary-hover: #2563EB;
+  --glow-color: rgba(59, 130, 246, 0.3);
+  --bg-gradient: linear-gradient(135deg, #f4f7f9, #e6e9ee);
+  --text-primary: #334155;
+  --text-secondary: #64748b;
+  --heading-color: #1e293b;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(255, 255, 255, 0.5);
+  --shadow-color: rgba(45, 55, 72, 0.1);
+  
+  --sidebar-bg: rgba(255, 255, 255, 0.6);
+  --sidebar-text: #475569;
+  --sidebar-text-active: #3B82F6;
+  --sidebar-bg-active: rgba(255, 255, 255, 0.9);
+  
+  --header-bg: rgba(255, 255, 255, 0.6);
+}
+
+/* --- Global Styles & Animated Background --- */
+@keyframes gradient-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 body {
   margin: 0;
-  background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: var(--font-body);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-gradient); 
+  background-size: 200% 200%;
+  animation: gradient-pan 20s ease infinite;
+  transition: all 0.4s ease;
+  min-height: 100vh;
 }
 
 * {
@@ -73,7 +95,7 @@ body {
   padding: 2rem;
 }
 
-/* --- SIDEBAR STYLES --- */
+/* --- SIDEBAR STYLES (Glassmorphism) --- */
 .sidebar {
   width: 260px;
   height: 100vh;
@@ -81,21 +103,23 @@ body {
   top: 0;
   left: 0;
   background-color: var(--sidebar-bg);
-  border-right: 1px solid var(--border-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid var(--card-border);
   color: var(--sidebar-text);
   padding: 1.5rem 0;
   display: flex;
   flex-direction: column;
   z-index: 50;
+  box-shadow: 4px 0 15px var(--shadow-color);
 }
 
 .sidebar-header {
   padding: 0 1.5rem 1.5rem 1.5rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  font-family: var(--font-heading);
-  color: var(--text-primary);
-  border-bottom: 1px solid var(--border-color);
+  color: var(--heading-color);
+  border-bottom: 1px solid var(--card-border);
   margin-bottom: 1rem;
 }
 
@@ -106,13 +130,13 @@ body {
   flex-grow: 1;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-color: var(--primary-color) transparent;
 }
 
 .sidebar-menu::-webkit-scrollbar { width: 6px; }
-.sidebar-menu::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+.sidebar-menu::-webkit-scrollbar-track { background: transparent; }
 .sidebar-menu::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb);
+  background-color: var(--primary-color);
   border-radius: 10px;
 }
 
@@ -129,53 +153,55 @@ body {
 .menu-item a, .logout-button {
   display: flex;
   align-items: center;
-  padding: 0.75rem 1.25rem;
+  padding: 0.8rem 1.25rem;
   color: var(--sidebar-text);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   font-size: 0.95rem;
   font-weight: 500;
-  font-family: var(--font-body);
   border: none;
   background: transparent;
   width: 100%;
   text-align: left;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 0.35rem;
 }
 
 .menu-item a:hover, .logout-button:hover {
-  background-color: #F7FAFC;
-  color: var(--text-primary);
+  background-color: rgba(255,255,255,0.2);
+  color: var(--heading-color);
+  transform: translateX(5px);
 }
 
 .menu-item a.active {
   background-color: var(--sidebar-bg-active);
-  color: var(--accent-primary);
+  color: var(--sidebar-text-active);
   font-weight: 600;
+  box-shadow: 0 4px 10px var(--shadow-color);
 }
 
-/* --- HEADER STYLES --- */
+/* --- HEADER STYLES (Glassmorphism) --- */
 .header {
   min-height: 80px;
   background-color: var(--header-bg);
-  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--card-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
+  box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 .header-brand {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--heading-color);
 }
 
 .header-title {
-  font-family: var(--font-body);
   font-size: 1.05rem;
   font-weight: 500;
   color: var(--text-secondary);

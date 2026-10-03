@@ -1,7 +1,7 @@
 /* --- ADD CHILD FORM STYLES --- */
 .add-child-container {
     padding: 2.5rem;
-    background-color: #f7f9fc; /* Light background to match your screenshot */
+    background: transparent;
     font-family: 'Poppins', sans-serif; /* Recommended font */
     width: 100%;
     min-height: 100vh; /* Ensure it takes full height */
@@ -13,7 +13,7 @@
 
 .form-header h2 {
     font-size: 1.8rem;
-    color: #333;
+    color: var(--text-primary);
     margin: 0 0 0.5rem 0;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .form-card {
-    background-color: #fff;
+    background: transparent;
     border-radius: 12px;
     padding: 2.5rem;
     
@@ -42,7 +42,7 @@
 .form-group label {
     display: block;
     font-weight: 600;
-    color: #495057;
+    color: var(--text-primary);
     margin-bottom: 0.6rem;
 }
 
@@ -54,14 +54,14 @@
     border: 1px solid #ced4da;
     border-radius: 8px;
     font-size: 1rem;
-    color: #333;
+    color: var(--text-primary);
     transition: border-color 0.3s, box-shadow 0.3s;
     box-sizing: border-box; /* Added for better sizing */
 }
 
 .form-group input:focus {
     outline: none;
-    border-color: #2A3F54; /* Match sidebar color */
+    border-color: var(--text-primary); /* Match sidebar color */
     
 }
 
@@ -81,19 +81,19 @@
 }
 
 .profile-uploader .uploader-box:hover {
-    background-color: #f8f9fa;
-    border-color: #2A3F54;
+    background: transparent;
+    border-color: var(--text-primary);
 }
 
 .profile-uploader svg {
-    color: #2A3F54;
+    color: var(--text-primary);
     margin-bottom: 1rem;
 }
 
 .profile-uploader .upload-text {
     display: block;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .profile-uploader .upload-hint {
@@ -114,7 +114,7 @@
 /* --- Permissions Section --- */
 .permissions-section h4 {
     font-size: 1.1rem;
-    color: #333;
+    color: var(--text-primary);
     border-bottom: 1px solid #e9ecef;
     padding-bottom: 0.75rem;
     margin-bottom: 1.25rem;
@@ -130,15 +130,15 @@
 
 .permission-item span {
     font-size: 1rem;
-    color: #495057;
+    color: var(--text-primary);
 }
 
 /* --- Toggle Switch CSS --- */
 .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
 .switch input { opacity: 0; width: 0; height: 0; }
-.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: transparent; transition: .4s; }
 .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; }
-input:checked + .slider { background-color: #2A3F54; }
+input:checked + .slider { background: transparent; }
 input:checked + .slider:before { transform: translateX(22px); }
 .slider.round { border-radius: 34px; }
 .slider.round:before { border-radius: 50%; }
@@ -164,7 +164,7 @@ input:checked + .slider:before { transform: translateX(22px); }
 }
 
 .btn-primary {
-    background-color: #2A3F54;
+    background: transparent;
     color: #fff;
 }
 
@@ -174,13 +174,13 @@ input:checked + .slider:before { transform: translateX(22px); }
 }
 
 .btn-secondary {
-    background-color: #f1f3f5;
-    color: #333;
+    background: transparent;
+    color: var(--text-primary);
     border: 1px solid #dee2e6;
 }
 
 .btn-secondary:hover {
-    background-color: #e9ecef;
+    background: transparent;
 }
 
 /* --- Responsive for smaller screens --- */
@@ -197,40 +197,62 @@ input:checked + .slider:before { transform: translateX(22px); }
 }
 
 
-/* Clean Enterprise SaaS Overrides */
+
+
+/* Jaw-Dropping Web3 Overrides */
 .card, .order-card, .website-card, .dashboard-widget, .stat-card, .modal-content, .action-btn {
-    border: 1px solid #E2E8F0 !important;
-    background-color: #FFFFFF !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
-    border-radius: 8px !important;
-    transition: all 0.2s ease !important;
+    border: 1px solid var(--card-border) !important;
+    border-top: 1px solid var(--card-border-glow) !important;
+    border-left: 1px solid var(--card-border-glow) !important;
+    background-color: var(--card-bg) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    box-shadow: 0 10px 30px var(--shadow-color), inset 0 0 20px rgba(0, 240, 255, 0.05) !important;
+    border-radius: 20px !important;
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+    color: var(--text-primary) !important;
 }
 .card:hover, .order-card:hover, .website-card:hover, .action-btn:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025) !important;
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 15px 40px var(--glow-color), inset 0 0 30px rgba(0, 240, 255, 0.1) !important;
+    border-color: var(--primary-color) !important;
+}
+h1, h2, h3, .widget-title, .header-brand {
+    background: linear-gradient(to right, #FFFFFF, var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px var(--glow-color);
 }
 button {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 500 !important;
-    text-transform: none !important;
-    background-color: #3B82F6 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important;
+    background: linear-gradient(135deg, var(--primary-color), #8A2BE2) !important;
     color: #FFFFFF !important;
     border: none !important;
-    border-radius: 6px !important;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 0 20px var(--glow-color) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 button:hover {
-    background-color: #2563EB !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 0 35px var(--glow-purple), 0 0 15px var(--primary-color) !important;
 }
 input, textarea, select {
-    background-color: #FFFFFF !important;
-    border: 1px solid #E2E8F0 !important;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
-    color: #2D3748 !important;
-    border-radius: 6px !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid var(--card-border) !important;
+    border-bottom: 2px solid var(--primary-color) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--heading-color) !important;
+    border-radius: 12px !important;
+    padding: 1rem 1.2rem !important;
+    transition: all 0.4s ease !important;
 }
 input:focus, textarea:focus, select:focus {
     outline: none !important;
-    border-color: #3B82F6 !important;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 20px var(--glow-color), inset 0 0 10px rgba(0, 240, 255, 0.2) !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transform: translateY(-2px);
 }

@@ -18,7 +18,7 @@
 .page-outlet {
   flex-grow: 1; /* Header ke baad bachi hui saari vertical jagah le lo */
   overflow-y: auto; /* Agar content zyada ho toh sirf yeh area scroll ho, poora page nahi */
-  background-color: #f7f9fc; /* Aapke screenshot jaisa halka background */
+  background: transparent; /* VERY IMPORTANT: Let the animated gradient from body show through */
 }
 
 /* Aapka AddChild component ab iske andar aayega, 
