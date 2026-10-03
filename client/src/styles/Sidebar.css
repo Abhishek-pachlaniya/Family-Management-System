@@ -139,3 +139,42 @@
       margin-right: 0;
     }
   }
+
+
+/* Clean Enterprise SaaS Overrides */
+.card, .order-card, .website-card, .dashboard-widget, .stat-card, .modal-content, .action-btn {
+    border: 1px solid #E2E8F0 !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+}
+.card:hover, .order-card:hover, .website-card:hover, .action-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025) !important;
+}
+button {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    background-color: #3B82F6 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 6px !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+button:hover {
+    background-color: #2563EB !important;
+}
+input, textarea, select {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+    color: #2D3748 !important;
+    border-radius: 6px !important;
+}
+input:focus, textarea:focus, select:focus {
+    outline: none !important;
+    border-color: #3B82F6 !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+}

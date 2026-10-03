@@ -19,6 +19,9 @@ import homeRoutes from './routes/homeRoutes.js';
 config({ path: "./config.env" });
 
 export const app = express();
+import compression from 'compression';
+
+app.use(compression());
 
 
 

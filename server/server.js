@@ -19,8 +19,36 @@ initializeSocketServer(server);
 // Step 4: Server ko listen karwao
 const PORT = process.env.PORT || 4000;
 
-// Important: app.listen() ke bajaye server.listen() call karo
-server.listen(PORT, () => {
+process.on('uncaughtException', err => {
+    console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
+    console.log(err.name, err.message);
+    process.exit(1);
+});
+
+const serverApp = server.listen(PORT, () => {
     console.log(`✅ Server is running on port: ${PORT}`);
     console.log(`✅ Socket.IO is attached and listening for real-time events.`);
+});
+
+// Added an error handler for the server to catch EADDRINUSE
+serverApp.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        console.error(`❌ Error: Port ${PORT} is already in use.`);
+        console.error(`💡 Tip: Please kill the process running on port ${PORT} before starting the server.`);
+        process.exit(1);
+    } else {
+        console.error(`❌ Server Error:`, err);
+    }
+});
+
+process.on('unhandledRejection', err => {
+    console.log('UNHANDLED REJECTION! 💥 Shutting down...');
+    console.log(err.name, err.message);
+    if (serverApp) {
+        serverApp.close(() => {
+            process.exit(1);
+        });
+    } else {
+        process.exit(1);
+    }
 });

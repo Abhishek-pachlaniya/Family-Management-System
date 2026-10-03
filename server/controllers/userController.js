@@ -175,13 +175,14 @@ export const createChildUser = catchAsyncError(async (req, res, next) => {
 // controllers/userController.js
 
 export const verifyChildOtp = catchAsyncError(async (req, res, next) => {
-  const { email, otp } = req.body;
+  let { email, otp } = req.body;
   const parentId = req.user._id;
 
   if (!email || !otp) {
     return next(new ErrorHandler("Please provide the child's email and OTP.", 400));
   }
   
+  email = email.toLowerCase();
   // ✅ OTP LENGTH CHECK ADD KIYA GAYA
   if (otp.length !== 5) {
       return next(new ErrorHandler("Invalid OTP format. It must be 5 digits.", 400));
@@ -287,7 +288,8 @@ function generateEmailTemplate(code) {
 }
 
 export const verifyOTP = catchAsyncError(async (req, res, next) => {
-  const { email, otp, phone } = req.body;
+  let { email, otp, phone } = req.body;
+  if(email) email = email.toLowerCase();
 
   function validatePhoneNumber(phone) {
     const phoneRegex = /^\+[1-9]\d{1,14}$/;
@@ -356,11 +358,13 @@ export const verifyOTP = catchAsyncError(async (req, res, next) => {
 
 export const login = catchAsyncError(async (req, res, next) => {
     console.log("Login request body:", req.body); 
-  const { email, password } = req.body;
+  let { email, password } = req.body;
 
   if (!email || !password) {
     return next(new ErrorHandler("Email and Password required", 400));
   }
+
+  email = email.toLowerCase();
 
   // Select password + role, familyId, parentId to send back
   const user = await User.findOne({ email, accountVerified: true }).select("+password");
@@ -387,6 +391,12 @@ export const login = catchAsyncError(async (req, res, next) => {
   if (!user.activeSessions) {
     user.activeSessions = [];
   }
+  
+  // Keep only the most recent 5 sessions to prevent array from growing indefinitely
+  if (user.activeSessions.length > 5) {
+      user.activeSessions = user.activeSessions.slice(-4);
+  }
+  
   user.activeSessions.push(newSession);
   await user.save({ validateBeforeSave: false });
 

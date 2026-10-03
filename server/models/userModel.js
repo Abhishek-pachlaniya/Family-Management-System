@@ -103,6 +103,11 @@
     { unique: true, partialFilterExpression: { accountVerified: true } }
   );
 
+  // Add indexes for performance optimization
+  userSchema.index({ phone: 1 });
+  userSchema.index({ familyId: 1 });
+  userSchema.index({ parentId: 1 });
+
   userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) return next();
     this.password = await bcrypt.hash(this.password, 10);

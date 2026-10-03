@@ -8,6 +8,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recha
 // Icons (yeh pehle se hi the)
 import { FaFileInvoiceDollar, FaRegCommentDots, FaTasks, FaExclamationTriangle, FaMapMarkerAlt, FaPlus, FaUpload, FaGift } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 // CSS file (yeh pehle se hi thi)
@@ -16,14 +17,14 @@ import '../../styles/Dashboard/dashboard.css';
 
 // Chart ke liye colors define kar lete hain
 const COLORS = {
-    Housing: '#0088FE',
-    Groceries: '#00C49F',
-    Utilities: '#FFBB28',
-    Other: '#FF8042',
-    Transport: '#AF19FF',
-    Entertainment: '#FF4560',
-    Education: '#775DD0',
-    Health: '#4CAF50',
+    Housing: '#0A2540', /* Deep Sapphire */
+    Groceries: '#14B8A6', /* Premium Teal */
+    Utilities: '#D4AF37', /* Champagne Gold */
+    Other: '#64748B', /* Slate Gray */
+    Transport: '#6366F1', /* Soft Indigo */
+    Entertainment: '#F43F5E', /* Rose */
+    Education: '#38BDF8', /* Light Sky Blue */
+    Health: '#10B981', /* Emerald */
 };
 const UsersIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
@@ -62,22 +63,18 @@ const DashboardHome = () => {
 
   // Action buttons ke liye placeholder functions
   const handleShopping = () => {
-    // Yahan aap user ko naye expense page par navigate kar sakte hain
-    // Example: 
-    alert('LETS GOOOO!');
+    toast.success('Navigating to Shopping!');
     navigate('/dashboard/orders');
   };
 
   const handleUploadDocument = () => {
-    // Yahan file upload ka modal open kar sakte hain
-    alert('Upload Certificate Clicked!');
+    toast.info('Opening Document Upload...');
     navigate('/dashboard/documents');
   };
 
   const handleChat = () => {
-    alert('Chat button clicked!');
+    toast.info('Opening Family Chat...');
      navigate('/dashboard/communication');
-
   };
 
 

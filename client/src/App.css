@@ -4,28 +4,38 @@
   width: 100%; /* Taaki choti screen par poori jagah le */
   margin: 0 auto; /* Yeh isko horizontally center karega */
 }
-:root,  /* Shadow for cards and header */
+:root, [data-theme='dark'], [data-theme='light'] {
+  --bg-primary: #F5F7FA;
+  --bg-secondary: #FFFFFF;
+  --text-primary: #2D3748;
+  --text-secondary: #718096;
   
+  /* Sidebar Variables */
+  --sidebar-bg: #FFFFFF;
+  --sidebar-text: #4A5568;
+  --sidebar-text-active: #2B6CB0;
+  --sidebar-bg-active: #EBF8FF; /* Light blue tint */
   
-  /* --toggle-fg: #f1c40f;           */
-
+  /* Header Variables */
+  --header-bg: #FFFFFF;
+  --border-color: #E2E8F0;
   
-[data-theme='dark'] {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --sidebar-bg: #0f172a;
-  --sidebar-text: #94a3b8;
-  --sidebar-text-active: #ffffff;
-  --sidebar-bg-active: #334155;
-  --header-bg: #1e293b;
-  --border-color: #334155;
-  --shadow-color: rgba(0, 0, 0, 0.4);
-  /* --toggle-bg: #e2e8f0; */
-  /* --toggle-fg: #f39c12; */
-  --scrollbar-track: var(--sidebar-bg);
-  --scrollbar-thumb: var(--sidebar-bg-active);
+  /* SaaS Clean Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* Accent Colors */
+  --accent-primary: #3B82F6; /* Bright Light Blue */
+  --accent-hover: #2563EB;
+  
+  /* Scrollbar */
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: #CBD5E0;
+  
+  /* Typography */
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Inter', sans-serif;
 }
 
 /* --- GLOBAL & LAYOUT STYLES --- */
@@ -33,9 +43,7 @@ body {
   margin: 0;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-body);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -49,25 +57,23 @@ body {
 
 .sidebar-container {
   width: 260px;
-  flex-shrink: 0; /* Prevents sidebar from shrinking */
+  flex-shrink: 0;
 }
 
 .main-content {
   flex-grow: 1;
-  padding-left: 260px; /* Same as sidebar width, to make space for it */
+  padding-left: 260px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-
-
 .page-content {
-  margin-top: 80px; /* Same as header height */
+  margin-top: 80px;
   padding: 2rem;
 }
 
-/* --- SIDEBAR STYLES (WITH SCROLL FIX) --- */
+/* --- SIDEBAR STYLES --- */
 .sidebar {
   width: 260px;
   height: 100vh;
@@ -75,108 +81,102 @@ body {
   top: 0;
   left: 0;
   background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
   color: var(--sidebar-text);
   padding: 1.5rem 0;
   display: flex;
   flex-direction: column;
-  /* overflow-y has been removed from here */
+  z-index: 50;
 }
 
 .sidebar-header {
   padding: 0 1.5rem 1.5rem 1.5rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 1rem;
 }
 
-/* THIS IS THE FIX: The menu list is now the scrollable part */
 .sidebar-menu {
   list-style: none;
-  padding: 0;
+  padding: 0 1rem;
   margin: 0;
-  flex-grow: 1; /* Pushes the logout button to the bottom by taking all available space */
-  overflow-y: auto; /* Makes only the menu scrollable */
-  
-  /* Optional: Better looking scrollbars for Firefox */
+  flex-grow: 1;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
-/* Optional: Better looking scrollbars for Chrome/Safari/Edge */
-.sidebar-menu::-webkit-scrollbar {
-  width: 8px;
-}
-
-.sidebar-menu::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-
+.sidebar-menu::-webkit-scrollbar { width: 6px; }
+.sidebar-menu::-webkit-scrollbar-track { background: var(--scrollbar-track); }
 .sidebar-menu::-webkit-scrollbar-thumb {
   background-color: var(--scrollbar-thumb);
   border-radius: 10px;
-  border: 2px solid var(--scrollbar-track);
 }
 
 .menu-heading {
   padding: 0.5rem 1.5rem;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 600;
   color: var(--text-secondary);
   margin-top: 1rem;
+  letter-spacing: 0.05em;
 }
 
 .menu-item a, .logout-button {
   display: flex;
   align-items: center;
-  padding: 0.8rem 1.5rem;
+  padding: 0.75rem 1.25rem;
   color: var(--sidebar-text);
   text-decoration: none;
-  transition: background-color 0.2s, color 0.2s;
+  transition: all 0.2s ease;
   font-size: 0.95rem;
+  font-weight: 500;
+  font-family: var(--font-body);
   border: none;
-  background: none;
+  background: transparent;
   width: 100%;
   text-align: left;
   cursor: pointer;
+  border-radius: 8px;
+  margin-bottom: 0.35rem;
 }
 
 .menu-item a:hover, .logout-button:hover {
-  background-color: var(--sidebar-bg-active);
-  color: var(--sidebar-text-active);
+  background-color: #F7FAFC;
+  color: var(--text-primary);
 }
 
-/* Style for the active NavLink */
 .menu-item a.active {
   background-color: var(--sidebar-bg-active);
-  color: var(--sidebar-text-active);
+  color: var(--accent-primary);
   font-weight: 600;
 }
 
-
 /* --- HEADER STYLES --- */
 .header {
-  min-height:72px;
+  min-height: 80px;
   background-color: var(--header-bg);
   border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .header-brand {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.723);
-  
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .header-title {
-  font-size: 1.2rem;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
   font-weight: 500;
   color: var(--text-secondary);
 }

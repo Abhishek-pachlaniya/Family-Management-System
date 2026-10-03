@@ -31,6 +31,10 @@ export const errorMiddleware=(err,req,res,next)=>{
         const message=`Duplicate ${Object.keys(err.keyValue)} Entered`;
         err=new ErrorHandler(message,400);
     }
+    if(err.name==="ValidationError"){
+        const message = Object.values(err.errors).map(val => val.message).join(", ");
+        err=new ErrorHandler(message,400);
+    }
     return res.status(err.statusCode).json({
         success:false,
         message:err.message,

@@ -49,8 +49,8 @@ const Register = ({ setIsLogin }) => {
       navigateTo(`/otp-verification/${data.email}/${data.phone}`);
     } catch (error) {
       console.log(error);
-      // Optional: Error toast dikha sakte ho yahan
-      // toast.error("Registration failed. Please try again.");
+      const errorMessage = error.response?.data?.message || "Registration failed. Please try again.";
+      toast.error(errorMessage);
     } finally {
       // Clear timeout and reset state
       clearTimeout(timeoutId);
@@ -97,9 +97,7 @@ const Register = ({ setIsLogin }) => {
       {(errors.phone || errors.countryCode) && (
         <p className="error-message">Please provide a valid phone number.</p>
       )}
-
-      <input type="hidden" value="user" {...register("role")} />
-
+      <input type="hidden" value="admin" {...register("role")} />
       <div>
         <input
           type="password"

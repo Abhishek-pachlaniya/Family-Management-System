@@ -20,7 +20,7 @@ export const authorizeRoles = (...roles) => {
 export const isAuthenticated =catchAsyncError(async(req,res,next)=>{
     const {token}=req.cookies;
     if(!token){
-    return next(new ErrorHandler("User is not Authenticated", 400));
+    return next(new ErrorHandler("User is not Authenticated", 401));
     }
     const decoded=jwt.verify(token,process.env.JWT_KEY);
 
