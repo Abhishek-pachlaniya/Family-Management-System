@@ -14,7 +14,7 @@ function processFile(filePath) {
 
     // Add Jaw-Dropping Web3/Cyberpunk Overrides
     content += `\n/* Jaw-Dropping Web3 Overrides */
-.card, .order-card, .website-card, .dashboard-widget, .stat-card, .modal-content, .action-btn {
+.card, .order-card, .website-card, .dashboard-widget, .stat-card, .modal-content, .action-btn, .chart-container, .expense-form-container, .expense-table-container, .analytics-card, .profile-card {
     border: 1px solid var(--card-border) !important;
     border-top: 1px solid var(--card-border-glow) !important;
     border-left: 1px solid var(--card-border-glow) !important;
