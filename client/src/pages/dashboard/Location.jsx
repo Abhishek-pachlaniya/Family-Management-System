@@ -6,6 +6,7 @@ import L from 'leaflet';
 import { formatDistanceToNow } from 'date-fns';
 import API from '../../api/axios';
 import '../../styles/Dashboard/location.css';
+import 'leaflet/dist/leaflet.css'; // CRITICAL FIX: The map was scrambled because Leaflet CSS was missing!
 
 // ... (Leaflet Icon Fix and ChangeView component waise hi rahenge) ...
 delete L.Icon.Default.prototype._getIconUrl;

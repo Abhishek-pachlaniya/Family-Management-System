@@ -314,3 +314,61 @@ input:focus, textarea:focus, select:focus {
     background-color: rgba(0, 0, 0, 0.5) !important;
     transform: translateY(-2px);
 }
+
+/* Jaw-Dropping Web3 Overrides */
+.card, .order-card, .website-card, .dashboard-widget, .stat-card, .modal-content, .action-btn, .chart-container, .expense-form-container, .expense-table-container, .analytics-card, .profile-card, .member-list-container, .map-container-wrapper, .member-details-panel {
+    border: 1px solid var(--card-border) !important;
+    border-top: 1px solid var(--card-border-glow) !important;
+    border-left: 1px solid var(--card-border-glow) !important;
+    background-color: var(--card-bg) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    box-shadow: 0 10px 30px var(--shadow-color), inset 0 0 20px rgba(0, 240, 255, 0.05) !important;
+    border-radius: 20px !important;
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+    color: var(--text-primary) !important;
+}
+.card:hover, .order-card:hover, .website-card:hover, .action-btn:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 15px 40px var(--glow-color), inset 0 0 30px rgba(0, 240, 255, 0.1) !important;
+    border-color: var(--primary-color) !important;
+}
+h1, h2, h3, .widget-title, .header-brand {
+    background: linear-gradient(to right, #FFFFFF, var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px var(--glow-color);
+}
+button {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important;
+    background: linear-gradient(135deg, var(--primary-color), #8A2BE2) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 50px !important;
+    box-shadow: 0 0 20px var(--glow-color) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+button:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 0 35px var(--glow-purple), 0 0 15px var(--primary-color) !important;
+}
+input, textarea, select {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid var(--card-border) !important;
+    border-bottom: 2px solid var(--primary-color) !important;
+    backdrop-filter: blur(10px) !important;
+    color: var(--heading-color) !important;
+    border-radius: 12px !important;
+    padding: 1rem 1.2rem !important;
+    transition: all 0.4s ease !important;
+}
+input:focus, textarea:focus, select:focus {
+    outline: none !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 20px var(--glow-color), inset 0 0 10px rgba(0, 240, 255, 0.2) !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    transform: translateY(-2px);
+}
